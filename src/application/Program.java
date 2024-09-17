@@ -35,11 +35,15 @@ public class Program {
 		
 		System.out.println();
 		
+		seller = sellerDao.findById(9);
+		seller.setName("Stephany");
 		Calendar calendar = Calendar.getInstance();
-		calendar.set(1999, Calendar.JANUARY, 11);
+		calendar.set(1999, Calendar.SEPTEMBER, 03);
 		Date birthDay = calendar.getTime();
-		Seller newSeller = new Seller(null, "Vinícius", "vinimograph@gmail.com", birthDay, 5000.0, new Department(3, null));
-		sellerDao.insert(newSeller);
-		System.out.println("Inserted! New id = " + newSeller.getId());
+		seller.setBirthDate(birthDay);
+		seller.setEmail("stephanycassiano@gmail.com");
+		seller.setDepartment(new Department(2, null));
+		sellerDao.update(seller);
+		System.out.println("Update completed!");
 	}
 }
